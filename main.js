@@ -40,10 +40,10 @@ function getWeather(latlon){
   if(document.getElementById("requestSI").checked){
     units = "si";
   } else { units = "us"; }
-  var prefixCORS = "https://cors-anywhere.herokuapp.com/";
+  var prefixCORS = "https://cors-anywhere.herokuapp.com/"; // see https://github.com/Rob--W/cors-anywhere
   var weatherAPI = prefixCORS + "https://api.darksky.net/forecast/" + keyDarkSky + "/" + latlon + "?units=" + units;
   $.getJSON(weatherAPI, function(weatherData){
-    var temp = weatherData.currently.temperature;
+    var temp = Math.round(10*parseFloat(weatherData.currently.temperature))/10;
     $("#tempNo").html(temp);
     var wind = weatherData.currently.windSpeed;
     var cloudiness = weatherData.currently.cloudCover;
