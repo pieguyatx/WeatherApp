@@ -21,6 +21,14 @@
       <h1>Weather App</h1>
       <h2>A simple tool by Pius Wong</h2>
       <button id="start">Get weather</button>
+      <div class="switchContainer">
+        <div class="tempLabel">F</div>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+        <div class="tempLabel">C</div>
+      </div>
     </header>
 
     <main>
@@ -30,7 +38,8 @@
           <i class="fa fa-thermometer-half" aria-hidden="true"></i>
         </div>
         <div id="temp">
-          55 deg F
+          <span id="tempNo">55</span> deg <span id="tempUnit">F</span>
+
         </div>
         <div>
           <span id="windDirection">Wind direction</span> speed <span id="windSpeed">43</span> mph
