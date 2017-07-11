@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $("#start").on("click", function(){
     // set default units
-    var units = "us";
+    var unitSystem = "us";
     // get location
     var coordinates = getLocation();
   })
@@ -39,12 +39,16 @@ function getWeather(latlon){
   console.log(latlon); // debug
   var keyDarkSky = config.KEYDARKSKY;
   // check units
+  var units;
+  var distScale;
   if(document.getElementById("requestSI").checked){
     unitSystem = "si";
     units = {"temp": "C", "dist": "km", "speed": "kph"};
+    distScale = 1;
   } else {
     unitSystem = "us";
     units = {"temp": "F", "dist": "mi", "speed": "mph"};
+    distScale = 1.609; // km in mile
   }
   var prefixCORS = "https://cors-anywhere.herokuapp.com/"; // see https://github.com/Rob--W/cors-anywhere
   var weatherAPI = prefixCORS + "https://api.darksky.net/forecast/" + keyDarkSky + "/" + latlon + "?units=" + unitSystem;
@@ -59,19 +63,19 @@ function getWeather(latlon){
     $("#windUnit").html(units.speed);
     var windBearing = parseInt(weatherData.currently.windBearing);
     var windDirection = getDirection(windBearing);
-    console.log(windBearing);
-    console.log(windDirection);
     $("#direction").html(windDirection);
     // get other weather data for icons
+    var icon = weatherData.currently.icon;
     var cloudiness = weatherData.currently.cloudCover;
     var precipProb = weatherData.currently.precipProbability;
-    var stormDist = weatherData.currently.nearestStormDistance;
-    var forecast = weatherData.hourly.summary;
-    var icon = weatherData.currently.icon;
+    var stormDist = weatherData.currently.nearestStormDistance / distScale; // distance in miles
+    // display icons
+    displayIcons(icon,cloudiness,precipProb,stormDist);
+    //var forecast = weatherData.hourly.summary;
   })
-
 }
 
+// get cardinal directions from bearing in degrees 0=north, 90=east
 function getDirection(bearing){
   var direction = "?";
   if(bearing<=10 || bearing>=360){direction = "N"}
@@ -91,14 +95,16 @@ function getDirection(bearing){
   else if(bearing>=300 && bearing<=330){direction = "NE"}
   else if(bearing>330 && bearing<350){direction = "NNE"}
   return direction;
-  console.log(direction);
 }
 
-// show weather icons
-// font-awesome:
-// storm: bolt
-// rain: shower
-// sun: sun-o
-// cloudy: cloud
-// snow: snowclake-o
-// temps: thermometer-empty, -full, -half - quarter -thee-quarters
+// display icons according to weather
+function displayIcons(icon,cloudiness,precipProb,stormDist){
+  // show weather icons
+  // font-awesome:
+  // storm: bolt
+  // rain: shower
+  // sun: sun-o
+  // cloudy: cloud
+  // snow: snowclake-o
+  // temps: thermometer-empty, -full, -half - quarter -thee-quarters
+}
