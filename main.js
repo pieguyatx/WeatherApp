@@ -40,7 +40,8 @@ function getWeather(latlon){
   if(document.getElementById("requestSI").checked){
     units = "si";
   } else { units = "us"; }
-  var weatherAPI = "https://api.darksky.net/forecast/" + keyDarkSky + "/" + latlon + "?units=" + units;
+  var prefixCORS = "https://cors-anywhere.herokuapp.com/";
+  var weatherAPI = prefixCORS + "https://api.darksky.net/forecast/" + keyDarkSky + "/" + latlon + "?units=" + units;
   $.getJSON(weatherAPI, function(weatherData){
     var temp = weatherData.currently.temperature;
     $("#tempNo").html(temp);
