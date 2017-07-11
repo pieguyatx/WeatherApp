@@ -34,3 +34,12 @@ function getWeather(coords){
   var keyDarkSky = config.KEYDARKSKY;
   console.log("lat/lon = " + coords.latitude + " " + coords.longitude); // debug
 }
+
+// show weather icons
+// font-awesome:
+// storm: bolt
+// rain: shower
+// sun: sun-o
+// cloudy: cloud
+// snow: snowclake-o
+// temps: thermometer-empty, -full, -half - quarter -thee-quarters

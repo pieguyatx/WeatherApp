@@ -4,3 +4,6 @@ body{
 main>div {
   margin: 1em;
 }
+.symbol {
+  font-size: 3em;
+}
