@@ -1,0 +1,2 @@
+
+var keyDarkSky = config.KEYDARKSKY;
