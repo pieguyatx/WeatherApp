@@ -1,5 +1,7 @@
 $(document).ready(function(){
   $("#start").on("click", function(){
+    // set default units
+    var units = "us";
     // get location
     var coordinates = getLocation();
   })
@@ -28,12 +30,28 @@ function showPosition(position) {
     $("#city").html(data.results[0].formatted_address);
   });
   // get weather
-  getWeather(position.coords);
+  getWeather(latlon);
 }
-// get weather
-function getWeather(coords){
+// get weather data
+function getWeather(latlon){
+  console.log(latlon); // debug
   var keyDarkSky = config.KEYDARKSKY;
-  console.log("lat/lon = " + coords.latitude + " " + coords.longitude); // debug
+  // check units
+  if(document.getElementById("requestSI").checked){
+    units = "si";
+  } else { units = "us"; }
+  var weatherAPI = "https://api.darksky.net/forecast/" + keyDarkSky + "/" + latlon + "?units=" + units;
+  $.getJSON(weatherAPI, function(weatherData){
+    var temp = weatherData.currently.temperature;
+    $("#tempNo").html(temp);
+    var wind = weatherData.currently.windSpeed;
+    var cloudiness = weatherData.currently.cloudCover;
+    var precipProb = weatherData.currently.precipProbability;
+    var stormDist = weatherData.currently.nearestStormDistance;
+    var forecast = weatherData.hourly.summary;
+    var icon = weatherData.currently.icon;
+  })
+
 }
 
 // show weather icons

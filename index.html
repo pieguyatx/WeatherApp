@@ -24,7 +24,7 @@
       <div class="switchContainer">
         <div class="tempLabel">F</div>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="requestSI">
           <span class="slider round"></span>
         </label>
         <div class="tempLabel">C</div>
@@ -41,8 +41,8 @@
           <span id="tempNo">55</span> deg <span id="tempUnit">F</span>
 
         </div>
-        <div>
-          <span id="windDirection">Wind direction</span> speed <span id="windSpeed">43</span> mph
+        <div id="wind">
+          <span id="direction">Wind direction</span> <span id="speed">43</span> <span id="windUnit">mph</span>
         </div>
         <div class="symbol" id="iconWeather">
           <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -62,7 +62,7 @@
 
     <footer>
       <div>
-        Made with HTML/CSS/JavaScript and <a href="https://darksky.net/dev/">Dark Sky API</a>.
+        Made with HTML/CSS/JavaScript and <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>.
       </div>
       <div>
         Copyright 2017 <a href="http://www.piuswong.com" title="Link to Pius's projects">Pius Wong</a>
@@ -70,7 +70,7 @@
     </footer>
 
     <!--  jQuery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- JS -->
     <script type='text/javascript' src='config.js'></script>
     <script type="text/javascript" src="main.js"></script>
