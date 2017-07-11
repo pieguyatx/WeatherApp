@@ -70,7 +70,7 @@ function getWeather(latlon){
     var precipProb = weatherData.currently.precipProbability;
     var stormDist = weatherData.currently.nearestStormDistance / distScale; // distance in miles
     // display icons
-    displayIcons(icon,cloudiness,precipProb,stormDist);
+    displayIcons(icon,temp,cloudiness,precipProb,stormDist);
     //var forecast = weatherData.hourly.summary;
   })
 }
@@ -98,7 +98,7 @@ function getDirection(bearing){
 }
 
 // display icons according to weather
-function displayIcons(icon,cloudiness,precipProb,stormDist){
+function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
   // show weather icons
   // font-awesome:
   // storm: bolt
@@ -107,4 +107,15 @@ function displayIcons(icon,cloudiness,precipProb,stormDist){
   // cloudy: cloud
   // snow: snowclake-o
   // temps: thermometer-empty, -full, -half - quarter -thee-quarters
+  var tempIcon = "thermometer-half";
+  if(document.getElementById("requestSI").checked){
+    temp = temp*1.8 + 32; // convert to F
+  }
+  if(temp>85){ tempIcon = "thermometer-full"}
+  else if(temp<=85 && temp>60){ tempIcon = "thermometer-three-quarters"}
+  else if(temp<=60 && temp>50){ tempIcon = "thermometer-half"}
+  else if(temp<=50 && temp>32){ tempIcon = "thermometer-quarter"}
+  else if(temp<=32){ tempIcon = "thermometer-empty"}
+  var outputHTML = '<i class="fa fa-'+tempIcon+'" aria-hidden="true"></i>';
+  $("#iconTemp").html(outputHTML);
 }
