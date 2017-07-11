@@ -38,13 +38,18 @@ function getWeather(latlon){
   var keyDarkSky = config.KEYDARKSKY;
   // check units
   if(document.getElementById("requestSI").checked){
-    units = "si";
-  } else { units = "us"; }
+    unitSystem = "si";
+    units = {"temp": "C", "dist": "km", "speed": "kph"};
+  } else {
+    unitSystem = "us";
+    units = {"temp": "F", "dist": "mi", "speed": "mph"};
+  }
   var prefixCORS = "https://cors-anywhere.herokuapp.com/"; // see https://github.com/Rob--W/cors-anywhere
-  var weatherAPI = prefixCORS + "https://api.darksky.net/forecast/" + keyDarkSky + "/" + latlon + "?units=" + units;
+  var weatherAPI = prefixCORS + "https://api.darksky.net/forecast/" + keyDarkSky + "/" + latlon + "?units=" + unitSystem;
   $.getJSON(weatherAPI, function(weatherData){
     var temp = Math.round(10*parseFloat(weatherData.currently.temperature))/10;
     $("#tempNo").html(temp);
+    $("#tempUnit").html("&deg;"+units.temp)
     var wind = weatherData.currently.windSpeed;
     var cloudiness = weatherData.currently.cloudCover;
     var precipProb = weatherData.currently.precipProbability;
