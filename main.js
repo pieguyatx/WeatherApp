@@ -46,12 +46,12 @@ function setColors(hrs){
       rgbval[i] = 0;
     }
   }
-  var shadowout = "0px 0px 5px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
+  var shadowout = "0px 0px 4px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
   $("body").css("text-shadow",shadowout);
   shadowval[0] = Math.round(shadowval[0]*1.1);
   shadowval[1] = Math.round(shadowval[1]*1.2);
   shadowval[2] += 25;
-  shadowout = "0px 0px 5px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
+  shadowout = "0px 0px 4px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
   $("button, .slider").css("box-shadow",shadowout);
 }
 
