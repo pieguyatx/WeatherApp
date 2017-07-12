@@ -1,24 +1,32 @@
+// get time of day for use later
 var date = new Date();
 var hrs = date.getHours();
-// set background based on time of day
-var rgbmax = [119,245,255]; // cyan
-var rgbmin = [37,41,145]; // dark blue
-var rgbval = [255,255,255];
-for(let i=0; i<3; i++){
-  rgbval[i] = Math.round((rgbmax[i]-rgbmin[i])*Math.sin((hrs-4)*3.14159/12)+rgbmin[i]);
-}
-rgbstr = "rgb(" + rgbval[0] + "," + rgbval[1] + "," + rgbval[2] + ")";
-console.log(rgbstr);
-document.body.style.backgroundColor = rgbstr;
 
 $(document).ready(function(){
+  // set colors based on time of day
+  setColors(hrs);
+
+  // get weather on click; update colors
   $("#start").on("click", function(){
+  setColors(hrs);
     // set default units
     var unitSystem = "us";
     // get location
     var coordinates = getLocation();
   })
 });
+
+function setColors(hrs){
+  var rgbmax = [119,245,255]; // cyan
+  var rgbmin = [37,41,145]; // dark blue
+  var rgbval = [255,255,255];
+  for(let i=0; i<3; i++){
+    rgbval[i] = Math.round((rgbmax[i]-rgbmin[i])*Math.sin((hrs-4)*3.14159/12)+rgbmin[i]);
+  }
+  rgbstr = "rgb(" + rgbval[0] + "," + rgbval[1] + "," + rgbval[2] + ")";
+  console.log(rgbstr);
+  document.body.style.backgroundColor = rgbstr;
+}
 
 // get location data
 function getLocation() {
