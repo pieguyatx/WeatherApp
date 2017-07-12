@@ -1,3 +1,16 @@
+var date = new Date();
+var hrs = date.getHours();
+// set background based on time of day
+var rgbmax = [119,245,255]; // cyan
+var rgbmin = [37,41,145]; // dark blue
+var rgbval = [255,255,255];
+for(let i=0; i<3; i++){
+  rgbval[i] = Math.round((rgbmax[i]-rgbmin[i])*Math.sin((hrs-4)*3.14159/12)+rgbmin[i]);
+}
+rgbstr = "rgb(" + rgbval[0] + "," + rgbval[1] + "," + rgbval[2] + ")";
+console.log(rgbstr);
+document.body.style.backgroundColor = rgbstr;
+
 $(document).ready(function(){
   $("#start").on("click", function(){
     // set default units
@@ -120,8 +133,6 @@ function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
   else if(precipProb>0.6){ weatherIcon = "shower" }
   else if(cloudiness>0.6){ weatherIcon = "cloud"}
   else {
-    var date = new Date();
-    var hrs = date.getHours();
     if(hrs<=6 || hrs>=22){ weatherIcon = "moon-o"}
     else{
       weatherIcon = "sun-o"
