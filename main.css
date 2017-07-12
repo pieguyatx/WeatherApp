@@ -5,7 +5,7 @@ body{
   text-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
 }
 button, .infoGroup{
-  box-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
+  box-shadow: 200px 100px 50px #5c07cc;
   font-family: 'Josefin Slab', serif;
 }
 header h1{
@@ -25,19 +25,19 @@ div.row{
 }
 div.row button{
   font-size: 30px;
-  width: 155px;
-  height: 94px;
+  width: 159px;
+  height: 98px;
   padding: 10px;
   border-radius: 20px;
   background: springgreen;
   border-color: forestgreen;
-  margin: 0.25em;
+  margin: 10px;
 }
 div.row button:active{
   background-color: #66ff07;
 }
 div.infoGroup{
-  margin: 0.25em;
+  margin: 10px;
   font-size: 30px;
   width: 155px;
   height: 94px;
@@ -137,6 +137,18 @@ input:checked + .slider:before {
   background-color: #ffb59b;
   border-color: #f09b79;
 }
+canvas{
+  position: fixed;
+  z-index: -1;
+  bottom: 10vh;
+  right: 7vw;
+  opacity: 0.3;
+  height: 80vh;
+}
+#location{
+  margin: 10px;
+}
 footer{
   font-family: 'Oxygen', sans-serif;
+  margin: 20px;
 }

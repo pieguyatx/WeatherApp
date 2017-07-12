@@ -51,7 +51,7 @@ function setColors(hrs){
   shadowval[0] = Math.round(shadowval[0]*1.1);
   shadowval[1] = Math.round(shadowval[1]*1.2);
   shadowval[2] += 25;
-  shadowout = "0px 0px 4px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
+  shadowout = shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
   $("button, .infoGroup").css("box-shadow",shadowout);
 }
 
