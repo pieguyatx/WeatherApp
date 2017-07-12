@@ -47,7 +47,7 @@ function setColors(hrs){
     }
   }
   var shadowout = "0px 0px 4px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
-  $("header, footer").css("text-shadow",shadowout);
+  $("body").css("text-shadow",shadowout);
   shadowval[0] = Math.round(shadowval[0]*1.1);
   shadowval[1] = Math.round(shadowval[1]*1.2);
   shadowval[2] += 25;

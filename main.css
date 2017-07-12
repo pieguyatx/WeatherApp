@@ -2,8 +2,6 @@ body{
   text-align: center;
   color: white;
   font-family: 'Josefin Slab', serif;
-}
-header, footer{
   text-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
 }
 button, .infoGroup{
