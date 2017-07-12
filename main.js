@@ -30,7 +30,6 @@ function setColors(hrs){
     rgbval[i] = Math.round(0.5*(rgbmax[i]-rgbmin[i])*Math.cos((hrs-14.7)*Math.PI/12)+(rgbmax[i]+rgbmin[i])/2);
   }
   rgbstr = "rgb(" + rgbval.join(",") + ")";
-  console.log(rgbstr); // debug
   document.body.style.backgroundColor = rgbstr;
   // set drop shadow properties
   var shadowmax = [40,100,50];
@@ -41,20 +40,13 @@ function setColors(hrs){
   // set shadow vertical position and blur (incrase and decrease during the day)
   shadowval[1] = Math.round(0.5*(shadowmax[1]-shadowmin[1])*Math.cos((hrs-1.2)*Math.PI/6)+(shadowmax[1]+shadowmin[1])/2);
   shadowval[2] = Math.round(0.5*(shadowmax[2]-shadowmin[2])*Math.cos((hrs-7.6)*Math.PI/6)+(shadowmax[2]+shadowmin[2])/2);
-  // console.log(shadowval); // debug
   for(let i=0; i<3; i++){
     rgbval[i] = Math.round(rgbval[i]-100);
     if(rgbval[i]<0){
       rgbval[i] = 0;
     }
   }
-  /*
-  rgbval[0] = Math.round(rgbval[0]*0.7);
-  rgbval[1] = Math.round(rgbval[1]*0.5);
-  rgbval[2] = Math.round(rgbval[2]*0.8);
-  */
   var shadowout = "0px 0px 5px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
-  console.log(shadowout); // debug
   $("body").css("text-shadow",shadowout);
   shadowval[0] = Math.round(shadowval[0]*1.1);
   shadowval[1] = Math.round(shadowval[1]*1.2);
