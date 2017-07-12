@@ -1,14 +1,18 @@
 body{
   text-align: center;
   color: white;
-  text-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
   font-family: 'Josefin Slab', serif;
 }
-button, .slider{
+header, footer{
+  text-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
+}
+button{
   box-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
   font-family: 'Josefin Slab', serif;
 }
-
+infoGroup{
+  box-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
+}
 header h1{
   font-size: 4em;
   margin: 0;
@@ -44,6 +48,8 @@ div.infoGroup{
   height: 94px;
   padding: 0px;
   border-radius: 20px;
+  background-color: #9eb3f4;
+  border: solid 2px #6db5ff;
 }
 div.label{
   font-size: 30px;
