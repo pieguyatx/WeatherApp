@@ -3,9 +3,12 @@ var date = new Date();
 var hrs = date.getHours();
 
 $(document).ready(function(){
-  // set colors based on time of day
+  // set initial colors based on time of day
   setColors(hrs);
-
+  // set initial skycon
+  var skycons = new Skycons({"color": "white"});
+  skycons.add("skycon",Skycons.PARTLY_CLOUDY_DAY);
+  skycons.play();
   // get weather on click; update colors
   $("#start").on("click", function(){
   setColors(hrs);
@@ -17,6 +20,7 @@ $(document).ready(function(){
 });
 
 function setColors(hrs){
+  // set background color
   var rgbmax = [119,245,255]; // cyan
   var rgbmin = [37,41,145]; // dark blue
   var rgbval = [255,255,255];
@@ -24,8 +28,11 @@ function setColors(hrs){
     rgbval[i] = Math.round((rgbmax[i]-rgbmin[i])*Math.sin((hrs-4)*3.14159/12)+rgbmin[i]);
   }
   rgbstr = "rgb(" + rgbval[0] + "," + rgbval[1] + "," + rgbval[2] + ")";
-  console.log(rgbstr);
+  // console.log(rgbstr); // debug
   document.body.style.backgroundColor = rgbstr;
+  // set text colors
+
+  // set background icon color
 }
 
 // get location data
@@ -150,7 +157,7 @@ function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
   outputHTML = '<i class="fa fa-'+weatherIcon+'" aria-hidden="true"></i>';
   $("#iconWeather").html(outputHTML);
   // output Skycon
-  var skycons = new Skycons({"color": "black"});
+  var skycons = new Skycons({"color": "white"});
   icon = icon.replace(/-/g,"_").toUpperCase();
   skycons.add("skycon", Skycons[icon]);
   skycons.play();
