@@ -22,7 +22,6 @@ $(document).ready(function(){
 });
 
 function setColors(hrs){
-  // hrs = 18; // debug
   // set background color
   var rgbmax = [119,245,255]; // cyan
   var rgbmin = [22,6,112]; // dark blue
@@ -44,7 +43,7 @@ function setColors(hrs){
   shadowval[2] = Math.round(0.5*(shadowmax[2]-shadowmin[2])*Math.cos((hrs-7.6)*Math.PI/6)+(shadowmax[2]+shadowmin[2])/2);
   // console.log(shadowval); // debug
   for(let i=0; i<3; i++){
-    rgbval[i] = Math.round(0.7*rgbval[i]-100);
+    rgbval[i] = Math.round(rgbval[i]-100);
     if(rgbval[i]<0){
       rgbval[i] = 0;
     }
