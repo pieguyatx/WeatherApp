@@ -18,19 +18,43 @@ header h2{
   font-size: 1.4em;
   padding-right: 2em;
 }
-main>div {
-  margin: 1em;
+div.controls{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-.symbol {
-  font-size: 3em;
+div.controls button{
+  font-size: 30px;
+  width: 155px;
+  height: 94px;
+  padding: 10px;
+  border-radius: 20px;
+  background: springgreen;
+  border-color: forestgreen;
+  margin: 0.25em;
 }
-
+div.controls button:active{
+  background-color: #66ff07;
+}
+div.infoGroup{
+  margin: 0.25em;
+  font-size: 30px;
+  width: 155px;
+  height: 94px;
+  padding: 0px;
+  border-radius: 20px;
+}
+div.label{
+  font-size: 30px;
+  margin: 10px;;
+  padding: 0;
+}
 /* temp select */
 .switchContainer{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5em;
 }
 /* The switch - the box around the slider */
 .switch {
@@ -75,14 +99,22 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
-
 .slider.round:before {
   border-radius: 50%;
+}
+.tempLabel{
+  font-weight: bold;
+  padding: 0 10px 0 10px;
+}
+main>div {
+  margin: 1em;
+}
+.symbol {
+  font-size: 3em;
 }
 
 footer{

@@ -21,14 +21,21 @@
     <header>
       <h1>Weather App</h1>
       <h2>A simple tool by Pius Wong</h2>
-      <button id="start">Get weather</button>
-      <div class="switchContainer">
-        <div class="tempLabel">F</div>
-        <label class="switch">
-          <input type="checkbox" id="requestSI">
-          <span class="slider round"></span>
-        </label>
-        <div class="tempLabel">C</div>
+      <div class="controls">
+        <div class="infoGroup">
+          <div class="label">
+            Scale?
+          </div>
+          <div class="switchContainer">
+            <div class="tempLabel">&deg;F</div>
+            <label class="switch">
+              <input type="checkbox" id="requestSI">
+              <span class="slider round"></span>
+            </label>
+            <div class="tempLabel">&deg;C</div>
+          </div>
+        </div>
+        <button id="start">Get weather</button>
       </div>
     </header>
 
