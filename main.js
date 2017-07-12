@@ -127,7 +127,12 @@ function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
       weatherIcon = "sun-o"
     }
   }
-  // output icon
+  // output simple icons
   outputHTML = '<i class="fa fa-'+weatherIcon+'" aria-hidden="true"></i>';
   $("#iconWeather").html(outputHTML);
+  // output Skycon
+  var skycons = new Skycons({"color": "black"});
+  icon = icon.replace(/-/g,"_").toUpperCase();
+  skycons.add("skycon", Skycons[icon]);
+  skycons.play();
 }
