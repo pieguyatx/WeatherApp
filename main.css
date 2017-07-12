@@ -45,8 +45,8 @@ div.infoGroup{
   height: 94px;
   padding: 0px;
   border-radius: 20px;
-  background-color: #9eb3f4;
-  border: solid 2px #6db5ff;
+  background-color: #40bbdf;
+  border: solid 2px #399cff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,7 +80,7 @@ div.label{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #9441f4;
+  background-color: #58179f;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -96,7 +96,7 @@ div.label{
   transition: .4s;
 }
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #1f84a2;
 }
 input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
@@ -123,7 +123,22 @@ input:checked + .slider:before {
 #weather .symbol {
   font-size: 3em;
 }
-
+#temp{
+  background-color: #7bbeff;
+  border-color: #6eb0f4;
+}
+#iconTemp{
+  background-color: #c2a3f8;
+  border-color: #6eb0f4;
+}
+#wind{
+  background-color: #ee96e4;
+  border-color: #af94ff;
+}
+#iconWeather{
+  background-color: #ffb59b;
+  border-color: #f09b79;
+}
 footer{
   font-family: 'Oxygen', sans-serif;
 }
