@@ -4,9 +4,20 @@ body{
   font-family: 'Josefin Slab', serif;
   text-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
 }
+a {
+  text-decoration: none;
+  color: #d4f8ff;
+}
+a:hover{
+  color: rgb(250, 245, 105);
+}
+
 button, .infoGroup{
   box-shadow: 200px 100px 50px #5c07cc;
   font-family: 'Josefin Slab', serif;
+}
+header{
+  margin-top: 20px;
 }
 header h1{
   font-size: 4em;
@@ -140,10 +151,10 @@ input:checked + .slider:before {
 canvas{
   position: fixed;
   z-index: -1;
-  bottom: 10vh;
+  bottom: 15vh;
   right: 7vw;
-  opacity: 0.3;
-  height: 80vh;
+  opacity: 0.1;
+  height: 70vh;
 }
 #location{
   margin: 10px;
