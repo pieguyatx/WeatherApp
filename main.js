@@ -101,11 +101,6 @@ function getDirection(bearing){
 function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
   // show weather icons
   // font-awesome:
-  // storm: bolt
-  // rain: shower
-  // sun: sun-o
-  // cloudy: cloud
-  // snow: snowclake-o
   // temps: thermometer-empty, -full, -half - quarter -thee-quarters
   var tempIcon = "thermometer-half";
   if(document.getElementById("requestSI").checked){
@@ -118,4 +113,23 @@ function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
   else if(temp<=32){ tempIcon = "thermometer-empty"}
   var outputHTML = '<i class="fa fa-'+tempIcon+'" aria-hidden="true"></i>';
   $("#iconTemp").html(outputHTML);
+  // determine summary icon
+  if(stormDist<1){ weatherIcon = "bolt"}
+  else if(precipProb>0.7){
+    if(temp<32){ weatherIcon = "snowflake-o" }
+    else{weatherIcon = "shower" } }
+  else if(precipProb>0.6){ weatherIcon = "shower" }
+  else if(cloudiness>0.6){ weatherIcon = "cloud"}
+  else {
+    var date = new Date();
+    var hrs = date.getHours();
+    if(hrs<=6 || hrs>=22){ weatherIcon = "moon-o"}
+    else{
+      weatherIcon = "sun-o"
+    }
+  }
+  // sun: sun-o
+  // cloudy: cloud
+  outputHTML = '<i class="fa fa-'+weatherIcon+'" aria-hidden="true"></i>';
+  $("#iconWeather").html(outputHTML);
 }
