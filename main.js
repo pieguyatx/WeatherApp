@@ -30,9 +30,6 @@ function setColors(hrs){
   rgbstr = "rgb(" + rgbval[0] + "," + rgbval[1] + "," + rgbval[2] + ")";
   // console.log(rgbstr); // debug
   document.body.style.backgroundColor = rgbstr;
-  // set text colors
-
-  // set background icon color
 }
 
 // get location data

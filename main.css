@@ -1,5 +1,12 @@
 body{
   text-align: center;
+  color: white;
+  text-shadow: 0px 0px 5px black, 5px 5px 5px darkblue;
+  font-family: 'Josefin Slab', serif;
+}
+button, .slider{
+  box-shadow: 0px 0px 5px black, 5px 5px 5px darkblue;
+  font-family: 'Josefin Slab', serif;
 }
 main>div {
   margin: 1em;
@@ -66,4 +73,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+footer{
+  font-family: 'Oxygen', sans-serif;
 }
