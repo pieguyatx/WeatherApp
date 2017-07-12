@@ -69,7 +69,7 @@ function showPosition(position) {
   // get map
   var keyGoogleStatic = config.KEYGOOGLESTATICMAPS;
   var latlon = position.coords.latitude + "," + position.coords.longitude;
-  var mapAPI = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=13&size=380x200&maptype=hybrid&markers=color:blue%7C" + latlon + "&key=" + keyGoogleStatic;
+  var mapAPI = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=13&size=338x200&maptype=hybrid&markers=color:blue%7C" + latlon + "&key=" + keyGoogleStatic;
   $("#map").html("<img src='" + mapAPI + "'>");
   // get city, state
   var keyGoogleGeo = config.KEYGOOGLEGEOCODING;
@@ -182,5 +182,5 @@ function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
   skycons.add("skycon", Skycons[icon]);
   skycons.play();
   // make all obtained data visible after it's ready
-  $("#weather").css("display","block");
+  $("#weather,#location").css("display","block").addClass("fade-in");
 }
