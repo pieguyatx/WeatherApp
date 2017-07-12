@@ -21,7 +21,11 @@
     <header>
       <h1>Weather App</h1>
       <h2>A simple tool by Pius Wong</h2>
-      <div class="controls">
+    </header>
+
+    <main>
+
+      <div class="row" id="controls">
         <div class="infoGroup">
           <div class="label">
             Scale?
@@ -37,23 +41,29 @@
         </div>
         <button id="start">Get weather</button>
       </div>
-    </header>
-
-    <main>
 
       <div id="weather">
-        <div class="symbol" id="iconTemp">
+        <div class="row">
+          <div class="infoGroup" id="temp">
+            <div>
+              <span id="tempNo"></span> <span id="tempUnit"></span>
+            </div>
+          </div>
+          <div class="symbol infoGroup" id="iconTemp">
+          </div>
         </div>
-        <div id="temp">
-          <span id="tempNo"></span> <span id="tempUnit"></span>
+        <div class="row">
+          <div class="infoGroup" id="wind">
+            <div>
+              <span id="direction"></span><br/><span id="speed"></span> <span id="windUnit"></span>
+            </div>
+          </div>
+          <div class="infoGroup symbol" id="iconWeather">
+          </div>
         </div>
-        <div id="wind">
-          <span id="direction"></span> <span id="speed"></span> <span id="windUnit"></span>
-        </div>
-        <div class="symbol" id="iconWeather">
-        </div>
-        <canvas id="skycon" width="128" height="128"></canvas>
       </div>
+
+      <canvas id="skycon" width="128" height="128"></canvas>
 
       <div id="location">
         <div id="city">

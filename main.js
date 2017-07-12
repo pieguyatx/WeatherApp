@@ -16,7 +16,7 @@ $(document).ready(function(){
   setColors(hrs);
     // set default units
     var unitSystem = "us";
-    // get location
+    // get location, weather data, display it, sequentially
     var coordinates = getLocation();
   })
 });
@@ -161,7 +161,7 @@ function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
   var outputHTML = '<i class="fa fa-'+tempIcon+'" aria-hidden="true"></i>';
   $("#iconTemp").html(outputHTML);
   // determine summary icon
-  if(stormDist<1){ weatherIcon = "bolt"}
+  if(stormDist<0.5 && stormDist>=0){ weatherIcon = "bolt"}
   else if(precipProb>0.7){
     if(temp<32){ weatherIcon = "snowflake-o" }
     else{weatherIcon = "shower" } }
@@ -181,4 +181,6 @@ function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
   icon = icon.replace(/-/g,"_").toUpperCase();
   skycons.add("skycon", Skycons[icon]);
   skycons.play();
+  // make all obtained data visible after it's ready
+  $("#weather").css("display","block");
 }
