@@ -99,8 +99,7 @@ function getDirection(bearing){
 
 // display icons according to weather
 function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
-  // show weather icons
-  // font-awesome:
+  // show weather icons w/ font-awesome:
   // temps: thermometer-empty, -full, -half - quarter -thee-quarters
   var tempIcon = "thermometer-half";
   if(document.getElementById("requestSI").checked){
@@ -128,8 +127,7 @@ function displayIcons(icon,temp,cloudiness,precipProb,stormDist){
       weatherIcon = "sun-o"
     }
   }
-  // sun: sun-o
-  // cloudy: cloud
+  // output icon
   outputHTML = '<i class="fa fa-'+weatherIcon+'" aria-hidden="true"></i>';
   $("#iconWeather").html(outputHTML);
 }
