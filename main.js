@@ -40,18 +40,19 @@ function setColors(hrs){
   // set shadow vertical position and blur (incrase and decrease during the day)
   shadowval[1] = Math.round(0.5*(shadowmax[1]-shadowmin[1])*Math.cos((hrs-1.2)*Math.PI/6)+(shadowmax[1]+shadowmin[1])/2);
   shadowval[2] = Math.round(0.5*(shadowmax[2]-shadowmin[2])*Math.cos((hrs-7.6)*Math.PI/6)+(shadowmax[2]+shadowmin[2])/2);
+  // set color of shadows
   for(let i=0; i<3; i++){
     rgbval[i] = Math.round(rgbval[i]-100);
     if(rgbval[i]<0){
       rgbval[i] = 0;
     }
   }
-  var shadowout = "0px 0px 4px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
+  var shadowout = "0px 0px 4px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgba(" + rgbval.join(",") +",0.3)";
   $("body").css("text-shadow",shadowout);
   shadowval[0] = Math.round(shadowval[0]*1.1);
   shadowval[1] = Math.round(shadowval[1]*1.2);
   shadowval[2] += 25;
-  shadowout = shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
+  shadowout = shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgba(" + rgbval.join(",") +",0.3)";
   $("button, .infoGroup").css("box-shadow",shadowout);
 }
 

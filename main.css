@@ -161,7 +161,7 @@ canvas{
   display: none;
 }
 #map img{
-  border-radius: 20px; 
+  border-radius: 20px;
 }
 footer{
   font-family: 'Oxygen', sans-serif;
@@ -183,7 +183,19 @@ footer{
   -moz-animation-fill-mode:forwards;
   animation-fill-mode:forwards;
 
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
+  -webkit-animation-duration:0.5s;
+  -moz-animation-duration:0.5s;
+  animation-duration:0.5s;
+}
+
+@media only screen and (max-width: 420px){
+  header h1{
+    font-size: 3em;
+    margin: 0;
+    margin-bottom: -.3em;
+  }
+  header h2{
+    font-size: 1.4em;
+    padding: 0;
+  }
 }
