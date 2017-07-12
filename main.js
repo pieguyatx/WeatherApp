@@ -3,7 +3,9 @@ var date = new Date();
 var hrs = date.getHours();
 
 $(document).ready(function(){
-  // set initial colors based on time of day
+  // set initial colors, other aesthetics based on time of day
+  date = new Date();
+  hrs = date.getHours();
   setColors(hrs);
   // set initial skycon
   var skycons = new Skycons({"color": "white"});
@@ -20,16 +22,46 @@ $(document).ready(function(){
 });
 
 function setColors(hrs){
+  // hrs = 18; // debug
   // set background color
   var rgbmax = [119,245,255]; // cyan
-  var rgbmin = [37,41,145]; // dark blue
+  var rgbmin = [22,6,112]; // dark blue
   var rgbval = [255,255,255];
   for(let i=0; i<3; i++){
-    rgbval[i] = Math.round((rgbmax[i]-rgbmin[i])*Math.sin((hrs-4)*3.14159/12)+rgbmin[i]);
+    rgbval[i] = Math.round(0.5*(rgbmax[i]-rgbmin[i])*Math.cos((hrs-14.7)*Math.PI/12)+(rgbmax[i]+rgbmin[i])/2);
   }
-  rgbstr = "rgb(" + rgbval[0] + "," + rgbval[1] + "," + rgbval[2] + ")";
-  // console.log(rgbstr); // debug
+  rgbstr = "rgb(" + rgbval.join(",") + ")";
+  console.log(rgbstr); // debug
   document.body.style.backgroundColor = rgbstr;
+  // set drop shadow properties
+  var shadowmax = [40,100,50];
+  var shadowmin = [-40,10,15];
+  var shadowval = shadowmax;
+  // set shadow horizontal position (from one side to the other during the day)
+  shadowval[0] = Math.round(0.5*(shadowmax[0]-shadowmin[0])*Math.cos((hrs-7.2)*Math.PI/12)+(shadowmax[0]+shadowmin[0])/2);
+  // set shadow vertical position and blur (incrase and decrease during the day)
+  shadowval[1] = Math.round(0.5*(shadowmax[1]-shadowmin[1])*Math.cos((hrs-1.2)*Math.PI/6)+(shadowmax[1]+shadowmin[1])/2);
+  shadowval[2] = Math.round(0.5*(shadowmax[2]-shadowmin[2])*Math.cos((hrs-7.6)*Math.PI/6)+(shadowmax[2]+shadowmin[2])/2);
+  // console.log(shadowval); // debug
+  for(let i=0; i<3; i++){
+    rgbval[i] = Math.round(0.7*rgbval[i]-100);
+    if(rgbval[i]<0){
+      rgbval[i] = 0;
+    }
+  }
+  /*
+  rgbval[0] = Math.round(rgbval[0]*0.7);
+  rgbval[1] = Math.round(rgbval[1]*0.5);
+  rgbval[2] = Math.round(rgbval[2]*0.8);
+  */
+  var shadowout = "0px 0px 5px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
+  console.log(shadowout); // debug
+  $("body").css("text-shadow",shadowout);
+  shadowval[0] = Math.round(shadowval[0]*1.1);
+  shadowval[1] = Math.round(shadowval[1]*1.2);
+  shadowval[2] += 25;
+  shadowout = "0px 0px 5px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgb(" + rgbval.join(",") +")";
+  $("button, .slider").css("box-shadow",shadowout);
 }
 
 // get location data
