@@ -18,7 +18,15 @@ $(document).ready(function(){
     var unitSystem = "us";
     // get location, weather data, display it, sequentially
     var coordinates = getLocation();
-  })
+  });
+  // inform user to update data if units are changed
+  $("#requestSI").on("click", function(){
+    var x = document.getElementById("snackbar")
+    // Add the "show" class to DIV
+    x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  });
 });
 
 function setColors(hrs){
