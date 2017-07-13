@@ -2,7 +2,7 @@ body{
   text-align: center;
   color: white;
   font-family: 'Josefin Slab', serif;
-  text-shadow: 0px 0px 4px black, 200px 100px 50px #5c07cc;
+  text-shadow: 0px 0px 4px black, 200px 100px 50px 10px #5c07cc;
 }
 a {
   text-decoration: none;
@@ -11,10 +11,10 @@ a {
 a:hover{
   color: rgb(250, 245, 105);
 }
-
 button, .infoGroup{
-  box-shadow: 200px 100px 50px #5c07cc;
+  box-shadow: 200px 100px 50px 10px #5c07cc;
   font-family: 'Josefin Slab', serif;
+  position: relative;
 }
 header{
   margin-top: 20px;
@@ -167,7 +167,20 @@ footer{
   font-family: 'Oxygen', sans-serif;
   margin: 20px;
 }
-
+.infoGroup{
+  position: relative;
+  z-index: 0;
+}
+#temp, #iconTemp{
+  z-index: 2;
+}
+#wind, #iconWeather{
+  z-index: 3;
+}
+footer{
+  position: relative;
+  z-index: 7;
+}
 /* Animations */
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -213,7 +226,7 @@ footer{
     border-radius: 2px; /* Rounded borders */
     padding: 16px; /* Padding */
     position: fixed; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
+    z-index: 10; /* Add a z-index if needed */
     left: 50%; /* Center the snackbar */
     bottom: 30px; /* 30px from the bottom */
 }

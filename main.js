@@ -1,11 +1,11 @@
 // get time of day for use later
 var date = new Date();
-var hrs = date.getHours();
+var hrs = date.getHours() + date.getMinutes()/60;
 
 $(document).ready(function(){
   // set initial colors, other aesthetics based on time of day
   date = new Date();
-  hrs = date.getHours();
+  hrs = date.getHours() + date.getMinutes()/60;
   setColors(hrs);
   // set initial skycon
   var skycons = new Skycons({"color": "white"});
@@ -13,7 +13,7 @@ $(document).ready(function(){
   skycons.play();
   // get weather on click; update colors
   $("#start").on("click", function(){
-  setColors(hrs);
+    setColors(hrs);
     // set default units
     var unitSystem = "us";
     // get location, weather data, display it, sequentially
@@ -40,14 +40,15 @@ function setColors(hrs){
   rgbstr = "rgb(" + rgbval.join(",") + ")";
   document.body.style.backgroundColor = rgbstr;
   // set drop shadow properties
-  var shadowmax = [40,100,50];
-  var shadowmin = [-40,10,15];
+  var shadowmax = [40,100,50,10];
+  var shadowmin = [-40,10,15,-10];
   var shadowval = shadowmax;
   // set shadow horizontal position (from one side to the other during the day)
   shadowval[0] = Math.round(0.5*(shadowmax[0]-shadowmin[0])*Math.cos((hrs-7.2)*Math.PI/12)+(shadowmax[0]+shadowmin[0])/2);
   // set shadow vertical position and blur (incrase and decrease during the day)
   shadowval[1] = Math.round(0.5*(shadowmax[1]-shadowmin[1])*Math.cos((hrs-1.2)*Math.PI/6)+(shadowmax[1]+shadowmin[1])/2);
   shadowval[2] = Math.round(0.5*(shadowmax[2]-shadowmin[2])*Math.cos((hrs-7.6)*Math.PI/6)+(shadowmax[2]+shadowmin[2])/2);
+  shadowval[3] = Math.round(0.5*(shadowmax[3]-shadowmin[3])*Math.cos((hrs-7.1)*Math.PI/6)+(shadowmax[3]+shadowmin[3])/2);
   // set color of shadows
   for(let i=0; i<3; i++){
     rgbval[i] = Math.round(rgbval[i]-100);
@@ -55,12 +56,12 @@ function setColors(hrs){
       rgbval[i] = 0;
     }
   }
-  var shadowout = "0px 0px 4px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgba(" + rgbval.join(",") +",0.3)";
+  var shadowout = "0px 0px 4px black, " + shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgba(" + rgbval.join(",") +",0.5)";
   $("body").css("text-shadow",shadowout);
   shadowval[0] = Math.round(shadowval[0]*1.1);
   shadowval[1] = Math.round(shadowval[1]*1.2);
   shadowval[2] += 25;
-  shadowout = shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgba(" + rgbval.join(",") +",0.3)";
+  shadowout = shadowval[0] + "vw " + shadowval[1] + "px " + shadowval[2] + "px rgba(" + rgbval.join(",") +",0.5)";
   $("button, .infoGroup").css("box-shadow",shadowout);
 }
 
@@ -84,7 +85,7 @@ function showPosition(position) {
   var keyGoogleGeo = config.KEYGOOGLEGEOCODING;
   var cityAPI = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlon + "&result_type=locality&key=" + keyGoogleGeo;
   $.getJSON(cityAPI, function(data){
-    console.log(data.results[0].formatted_address); // debug
+    //console.log(data.results[0].formatted_address); // debug
     $("#city").html(data.results[0].formatted_address);
   });
   // get weather
@@ -93,7 +94,7 @@ function showPosition(position) {
 
 // get weather data
 function getWeather(latlon){
-  console.log(latlon); // debug
+  //console.log(latlon); // debug
   var keyDarkSky = config.KEYDARKSKY;
   // check units
   var units;
