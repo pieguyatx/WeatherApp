@@ -101,7 +101,7 @@ function getWeather(latlon){
   var distScale;
   if(document.getElementById("requestSI").checked){
     unitSystem = "si";
-    units = {"temp": "C", "dist": "km", "speed": "kph"};
+    units = {"temp": "C", "dist": "km", "speed": "m/s"};
     distScale = 1;
   } else {
     unitSystem = "us";
