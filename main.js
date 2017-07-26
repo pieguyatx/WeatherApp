@@ -108,8 +108,8 @@ function getWeather(latlon){
     units = {"temp": "F", "dist": "mi", "speed": "mph"};
     distScale = 1.609; // km in mile
   }
-  var prefixCORS = "https://cors-anywhere.herokuapp.com/"; // see https://github.com/Rob--W/cors-anywhere
-  var weatherAPI = prefixCORS + "https://api.darksky.net/forecast/" + keyDarkSky + "/" + latlon + "?units=" + unitSystem;
+  var prefixCORS = "http://localhost:3000/weather/"; // see https://github.com/Rob--W/cors-anywhere
+  var weatherAPI = prefixCORS + latlon + "?units=" + unitSystem;
   $.getJSON(weatherAPI, function(weatherData){
     // display temp
     var temp = Math.round(10*parseFloat(weatherData.currently.temperature))/10;
