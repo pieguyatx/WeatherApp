@@ -80,7 +80,9 @@ function showPosition(position) {
   var keyGoogleStatic = config.KEYGOOGLESTATICMAPS;
   var latlon = position.coords.latitude + "," + position.coords.longitude;
   var mapAPI = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=13&size=338x200&maptype=hybrid&markers=color:blue%7C" + latlon + "&key=" + keyGoogleStatic;
-  $("#map").html("<img src='" + mapAPI + "'>");
+  if(mapAPI){
+    $("#map").html("<img src='" + mapAPI + "'>");    
+  }
   // get city, state
   var keyGoogleGeo = config.KEYGOOGLEGEOCODING;
   var cityAPI = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlon + "&result_type=locality&key=" + keyGoogleGeo;
