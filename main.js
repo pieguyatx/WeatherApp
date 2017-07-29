@@ -85,8 +85,10 @@ function showPosition(position) {
   var keyGoogleGeo = config.KEYGOOGLEGEOCODING;
   var cityAPI = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlon + "&result_type=locality&key=" + keyGoogleGeo;
   $.getJSON(cityAPI, function(data){
-    //console.log(data.results[0].formatted_address); // debug
-    $("#city").html(data.results[0].formatted_address);
+    // console.log(data); // debug
+    if(data){
+      $("#city").html(data.results[0].formatted_address);
+    }
   });
   // get weather
   getWeather(latlon);
@@ -108,7 +110,7 @@ function getWeather(latlon){
     units = {"temp": "F", "dist": "mi", "speed": "mph"};
     distScale = 1.609; // km in mile
   }
-  var prefixCORS = "http://localhost:3000/weather/"; // see https://github.com/Rob--W/cors-anywhere
+  var prefixCORS = "https://piusweatherapp.herokuapp.com/weather/"; // see https://github.com/Rob--W/cors-anywhere
   var weatherAPI = prefixCORS + latlon + "?units=" + unitSystem;
   $.getJSON(weatherAPI, function(weatherData){
     // display temp
